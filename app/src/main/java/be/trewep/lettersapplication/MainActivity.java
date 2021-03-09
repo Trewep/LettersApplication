@@ -2,8 +2,10 @@ package be.trewep.lettersapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        viewModel = new ViewModelProvider(this).get(LetterViewModel.class);
 
         tvLetter = findViewById(R.id.tv_letter);
 
@@ -27,5 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
+
+    }
+    public void pickVowel(View v){
+        viewModel.setLetter('A');
+    }
+
+    public void pickConsonant(View v){
+        viewModel.setLetter('B');
     }
 }
