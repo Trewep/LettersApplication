@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 public class LetterViewModel extends ViewModel {
     private MutableLiveData <Character> letter;
+    private MutableLiveData <Integer> number;
 
     public MutableLiveData <Character> getLetter(){
         if (letter == null){
@@ -12,7 +13,10 @@ public class LetterViewModel extends ViewModel {
         }
         return letter;
     }
+
+
     public void setLetter(char c){
         letter.setValue(c);
     }
+
 }
