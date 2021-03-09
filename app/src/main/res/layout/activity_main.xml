@@ -25,7 +25,8 @@
         android:text="consonant"
         app:layout_constraintBottom_toTopOf="@+id/tv_letter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_vowel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,20 +37,10 @@
         android:onClick="pickVowel"
         android:text="vowel"
         app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="152dp" />
-
-    <Button
-        android:id="@+id/btn_vowel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:onClick="picknumber"
-        android:text="number"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_number"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@+id/btn_consonant"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

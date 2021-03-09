@@ -69,5 +69,4 @@ public class MainActivity extends AppCompatActivity {
         } while (!isConsonant(c));
         viewModel.setLetter(c);
     }
-
 }
