@@ -4,43 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#4887BC">
 
-    <TextView
-        android:id="@+id/tv_letter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This is a TextView"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_consonant"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="pickConsonant"
-        android:text="consonant"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
+    <FrameLayout
+        android:id="@+id/fragmentSpot"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_switch"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_vowel"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="438dp"
+            android:layout_height="282dp"
+            app:srcCompat="@drawable/logo" />
+    </FrameLayout>
+
 
     <Button
-        android:id="@+id/btn_vowel"
+        android:id="@+id/btn_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="pickVowel"
-        android:text="vowel"
-        app:layout_constraintBottom_toTopOf="@+id/tv_letter"
-        app:layout_constraintEnd_toStartOf="@+id/btn_consonant"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:text="Switch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:backgroundTint="#8EC96E"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

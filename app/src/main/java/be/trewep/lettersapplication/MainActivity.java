@@ -1,72 +1,50 @@
 package be.trewep.lettersapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
 
-import java.util.Random;
+public class MainActivity extends AppCompatActivity{
 
-public class MainActivity extends AppCompatActivity {
+    Fragment currentLayout; //holds current fragment that's being shown
 
-    TextView tvLetter;
-    LetterViewModel viewModel;
+    final LetterFragment letterFragment = new LetterFragment();
+    final NumberFragment numberFragment = new NumberFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewModel = new ViewModelProvider(this).get(LetterViewModel.class);
+        currentLayout = letterFragment; //Starting Layout
 
-        tvLetter = findViewById(R.id.tv_letter);
+        Button btnChange = findViewById(R.id.btn_switch); //switch button to change
 
-        viewModel.getLetter().observe(this, new Observer<Character>() {
+        FragmentManager fm = getSupportFragmentManager(); //initialize fragment manager
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.fragmentSpot, currentLayout); //replace starting fragment with LetterFragment
+        ft.commit();
+
+        btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(Character character) {
-                tvLetter.setText(character.toString());
+            public void onClick(View view) {
 
+                if (currentLayout == letterFragment) {
+                    currentLayout = numberFragment;
+                } else {
+                    currentLayout = letterFragment;
+                }
+
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.fragmentSpot, currentLayout);
+                ft.commit();
             }
         });
-
-
-
-    }
-    public char pickALetter() {
-        Random random = new Random();
-        int ascii = random.nextInt(26) + 97;; // lowercase 'a'
-        return (char)ascii;
-    }
-
-    public boolean isVowel (char c) {
-        char[] vowels = {'a', 'e', 'i', 'o', 'u'};
-
-        for (char v: vowels) {
-            if (v == c) return true;
-        }
-        return false;
-    }
-
-    public boolean isConsonant (char c) {
-        return !isVowel(c);
-    }
-
-    public void pickVowel(View v) {
-        char c;
-        do {
-            c = pickALetter();
-        } while (!isVowel(c));
-        viewModel.setLetter(c);
-    }
-
-    public void pickConsonant(View v) {
-        char c;
-        do {
-            c = pickALetter();
-        } while (!isConsonant(c));
-        viewModel.setLetter(c);
     }
 }
